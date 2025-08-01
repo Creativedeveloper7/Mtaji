@@ -12,6 +12,8 @@ import Footer from './components/layout/Footer';
 import FloatingDonateButton from './components/ui/FloatingDonateButton';
 import SignInPage from './pages/auth/SignInPage';
 import SignUpPage from './pages/auth/SignUpPage';
+import Dashboard from './pages/dashboard/Dashboard';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 
 function App() {
@@ -25,6 +27,11 @@ function App() {
               <Route path="/admin/*" element={<AdminDashboard />} />
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
               <Route path="/*" element={
                 <>
                   <Navbar />

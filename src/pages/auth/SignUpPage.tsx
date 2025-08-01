@@ -17,7 +17,7 @@ const SignUpPage = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
-  const { register } = useAuth();
+  const { register, login } = useAuth();
   const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,8 +46,14 @@ const SignUpPage = () => {
     try {
       const success = await register(formData.name, formData.email, formData.password);
       if (success) {
-        alert('Account created successfully! Please sign in.');
-        navigate('/signin');
+        // Auto-login after successful registration
+        const loginSuccess = await login(formData.email, formData.password);
+        if (loginSuccess) {
+          navigate('/dashboard');
+        } else {
+          alert('Account created successfully! Please sign in.');
+          navigate('/signin');
+        }
       } else {
         setError('Email already exists. Please use a different email or sign in.');
       }
