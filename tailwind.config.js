@@ -22,6 +22,16 @@ export default {
         text: {
           dark: '#1a1a1a',
           light: '#ffffff',
+        },
+        earth: {
+          brown: '#A0522D',
+          darkBrown: '#8B4513',
+          tan: '#C2B280',
+          olive: '#556B2F',
+          sage: '#9CAF88',
+          cream: '#F5F5DC',
+          terracotta: '#E2725B',
+          moss: '#8FBC8F',
         }
       },
       fontFamily: {
